@@ -42,15 +42,15 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordChangedAt: req.body.passwordChangedAt
   });
   const url = `${req.protocol}://${req.get('host')}/me`;
-  console.log(url);
+  //console.log(url);
   await new Email(newUser, url).sendWecolme();
   createSendToken(newUser, 201, res);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(req.body);
-  console.log(email, password);
+  //console.log(req.body);
+  //console.log(email, password);
   // 1) Check if email and password exist
   if (!email || !password) {
     return next(new AppError('Please provide email and password', 400));
@@ -117,13 +117,13 @@ exports.isLoggedIn = async (req, res, next) => {
   if (req.cookies.jwt) {
     try {
       // 2) Verification token;
-      console.log('salut');
-      console.log(req.cookies.jwt);
+      //console.log('salut');
+      //console.log(req.cookies.jwt);
       const decoded = await promisify(jwt.verify)(
         req.cookies.jwt,
         process.env.JWT_SECRET
       );
-      console.log(`cookie:${decoded}`);
+      //console.log(`cookie:${decoded}`);
       // 3) Check if user still exists
       const currentUser = await User.findById(decoded.id);
       if (!currentUser) {
@@ -148,7 +148,7 @@ exports.isLoggedIn = async (req, res, next) => {
 // PASSER ARGUMENT A UN MIDDLEWARE
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
-    console.log(roles);
+    //console.log(roles);
 
     // CHECK DANS LE TABLEAU PASSER AU MIDDLEWARE PAR LA FONCTION SI LE ROLE DU USER EST AUTORISE
     if (!roles.includes(req.user.role)) {
@@ -217,8 +217,8 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 exports.updatePassword = catchAsync(async (req, res, next) => {
   // GET USER FROM COLLECTION
   const user = await User.findById(req.user.id).select('+password');
-  console.log(`user date: ${user}`);
-  console.log(req.body);
+  //console.log(`user date: ${user}`);
+  //console.log(req.body);
   // Check if posted password is correct
 
   if (!(await user.correctPassword(req.body.passwordCurrent, user.password))) {

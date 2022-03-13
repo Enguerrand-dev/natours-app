@@ -36,7 +36,7 @@ const reviewSchema = new mongoose.Schema(
 /*
 reviewSchema.pre('save', (req, res, next) => {
   const currentUser = req.query;
-  console.log(currentUser);
+  //console.log(currentUser);
   //this.user = req.user._id;
   next();
 });*/

@@ -18,7 +18,7 @@ if (mapBox) {
   displayMap(locations);
 }
 
-console.log('Hello from parcel');
+//console.log('Hello from parcel');
 
 if (loginForm) {
   loginForm.addEventListener('submit', e => {
@@ -40,7 +40,7 @@ if (updateForm) {
     form.append('name', document.getElementById('name').value);
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
-    console.log(form);
+    //console.log(form);
     updateSettings(form, 'data');
     //const name = document.getElementById('name').value;
     //const email = document.getElementById('email').value;

@@ -127,7 +127,7 @@ exports.displayMap = void 0;
 
 /* eslint-disable */
 var displayMap = function displayMap(locations) {
-  console.log(locations);
+  //console.log(locations);
   mapboxgl.accessToken = 'pk.eyJ1IjoiZW5ndWVycmFuZC1kZXYiLCJhIjoiY2t6NXRseWJvMDV2MTMwbWdpZmc4eWEwdyJ9.FKDyP3XMdv60o9YTw7fyag';
   var map = new mapboxgl.Map({
     container: 'map',
@@ -9128,18 +9128,17 @@ var login = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            console.log(email, password);
-            _context.next = 4;
+            _context.next = 3;
             return (0, _axios.default)({
               method: 'POST',
-              url: 'http://localhost:3000/api/v1/users/login',
+              url: '/api/v1/users/login',
               data: {
                 email: email,
                 password: password
               }
             });
 
-          case 4:
+          case 3:
             res = _context.sent;
 
             if (res.data.status === 'success') {
@@ -9147,23 +9146,23 @@ var login = /*#__PURE__*/function () {
               window.setTimeout(function () {
                 location.assign('/');
               }, 1500);
-            }
+            } //console.log(res);
 
-            console.log(res);
-            _context.next = 12;
+
+            _context.next = 10;
             break;
 
-          case 9:
-            _context.prev = 9;
+          case 7:
+            _context.prev = 7;
             _context.t0 = _context["catch"](0);
             (0, _alert.showAlert)('error', _context.t0.response.data.message);
 
-          case 12:
+          case 10:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 7]]);
   }));
 
   return function login(_x, _x2) {
@@ -9180,32 +9179,31 @@ var logout = /*#__PURE__*/function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            console.log('test');
-            _context2.prev = 1;
-            _context2.next = 4;
+            _context2.prev = 0;
+            _context2.next = 3;
             return (0, _axios.default)({
               method: 'GET',
-              url: 'http://localhost:3000/api/v1/users/logout'
+              url: '/api/v1/users/logout'
             });
 
-          case 4:
+          case 3:
             res = _context2.sent;
             if (res.data.status === 'success') location.reload(true);
-            _context2.next = 12;
+            _context2.next = 10;
             break;
 
-          case 8:
-            _context2.prev = 8;
-            _context2.t0 = _context2["catch"](1);
-            console.log(_context2.t0);
+          case 7:
+            _context2.prev = 7;
+            _context2.t0 = _context2["catch"](0);
+            //console.log(error);
             (0, _alert.showAlert)('error', 'Error logging out! Try again');
 
-          case 12:
+          case 10:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[1, 8]]);
+    }, _callee2, null, [[0, 7]]);
   }));
 
   return function logout() {
@@ -9507,38 +9505,38 @@ var updateSettings = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            console.log(data);
-            url = type === 'password' ? 'http://localhost:3000/api/v1/users/updateMyPassword' : 'http://localhost:3000/api/v1/users/updateMe';
-            _context.next = 5;
+            //console.log(data);
+            url = type === 'password' ? '/api/v1/users/updateMyPassword' : '/api/v1/users/updateMe';
+            _context.next = 4;
             return (0, _axios.default)({
               method: 'PATCH',
               url: url,
               data: data
             });
 
-          case 5:
+          case 4:
             res = _context.sent;
-            console.log(res);
 
+            //console.log(res);
             if (res.data.status === 'success') {
               (0, _alert.showAlert)('success', "".concat(type.toUpperCase(), " updated successfully!"));
-            }
+            } //console.log(res);
 
-            console.log(res);
-            _context.next = 14;
+
+            _context.next = 11;
             break;
 
-          case 11:
-            _context.prev = 11;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
             (0, _alert.showAlert)('error', _context.t0.response.data.message);
 
-          case 14:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 11]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function updateSettings(_x, _x2) {
@@ -9576,7 +9574,7 @@ var bookTour = /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return (0, _axios.default)("http://localhost:3000/api/v1/booking/checkout-session/".concat(tourId));
+            return (0, _axios.default)("/api/v1/booking/checkout-session/".concat(tourId));
 
           case 3:
             session = _context.sent;
@@ -9586,21 +9584,20 @@ var bookTour = /*#__PURE__*/function () {
             });
 
           case 6:
-            console.log(session);
-            _context.next = 12;
+            _context.next = 11;
             break;
 
-          case 9:
-            _context.prev = 9;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
             (0, _alert.showAlert)('error', _context.t0);
 
-          case 12:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function bookTour(_x) {
@@ -9636,9 +9633,8 @@ var bookBtn = document.getElementById('book-tour'); // VALUES
 if (mapBox) {
   var locations = JSON.parse(mapBox.dataset.location);
   (0, _mapbox.displayMap)(locations);
-}
+} //console.log('Hello from parcel');
 
-console.log('Hello from parcel');
 
 if (loginForm) {
   loginForm.addEventListener('submit', function (e) {
@@ -9657,8 +9653,8 @@ if (updateForm) {
     var form = new FormData();
     form.append('name', document.getElementById('name').value);
     form.append('email', document.getElementById('email').value);
-    form.append('photo', document.getElementById('photo').files[0]);
-    console.log(form);
+    form.append('photo', document.getElementById('photo').files[0]); //console.log(form);
+
     (0, _updateSettings.updateSettings)(form, 'data'); //const name = document.getElementById('name').value;
     //const email = document.getElementById('email').value;
     //const photo = document.getElementById('photo').value;
@@ -9739,7 +9735,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49192" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50630" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
